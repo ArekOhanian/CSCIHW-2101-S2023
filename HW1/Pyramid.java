@@ -16,6 +16,7 @@ Hint3: The print statement is System.out.println();
 */
 public class Pyramid {
     public static void Output() {
-        
+         String pyramid = "#\n##\n###\n####\n#####\n####\n###\n##\n#";
+         System.out.println(pyramid);
     }
 }
