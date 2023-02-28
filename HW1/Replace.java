@@ -8,7 +8,11 @@ package HW1;
 // HELLO
 // 01234
 public class Replace {
+    String s;
+    int x;
+    char z;
     public String charReplace(String s, int x, char z) {
+        
         return null;
         
     }
