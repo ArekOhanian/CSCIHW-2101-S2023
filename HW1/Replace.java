@@ -8,16 +8,9 @@ package HW1;
 // HELLO
 // 01234
 public class Replace {
-    String s = "Duck";
-    int x = 0;
-    char z = 'F';
+
     public String charReplace(String s, int x, char z) {
-    s = this.s;
-    x = this.x;
-    z = this.z;
-    String first = this.s.substring(0, this.x);
-    String last = this.s.substring(this.x + 1, this.s.length());
-    String result = first + this.z + last;
+    String result = s.substring(0, x) + z + s.substring(x + 1);
     return result;
     }
 
