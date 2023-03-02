@@ -8,7 +8,7 @@ public class Adlibs {
     String name;
     int age;
     String favoriteColor;
-    public  String story(String name, int age, String favoriteColor) {
+    public String story(String name, int age, String favoriteColor) {
         this.name = name;
         this.age = age;
         this.favoriteColor = favoriteColor;
