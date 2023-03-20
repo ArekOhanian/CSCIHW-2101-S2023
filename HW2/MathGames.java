@@ -11,7 +11,9 @@ public class MathGames {
     // Bonus points: Try to make it accept any 2 sides and return the 3rd. So it can take in
     // Hypotenuse and Perpendicular and return the base.
     // Example 1: pythagorean(3,4) would return 5
-
+    public static double therum(double opposite, double adjacent){
+        return Math.sqrt(Math.pow(opposite , 2) + Math.pow(adjacent , 2));
+    }
 
 
     
@@ -27,7 +29,19 @@ public class MathGames {
         // Hint 2: You will probably need to cast the double to an int
         // Hint 3: You will probably need to use the Math.ceil() method
         // Example: grade(69.3) would return a D
-
+    public static String Letter(double grade){
+        if(grade >= 90){
+            return "You have an A";
+        }else if(grade >= 80){
+            return "You have a B";
+        }else if(grade >= 70){
+            return "You have a C";
+        }else if(grade >= 60){
+            return "You have a D";
+        }else{
+            return "You have a F";
+        }
+    }
 
 
 
@@ -41,13 +55,17 @@ public class MathGames {
     //      Hint 3: It is possible you might need to Cast a double to an int or vice versa
     //      Hint 4: You will probably need to use the Math.ceil() method
     //      Example: tip(100, 4, 18) would return 5.0
-
+    public static double tip(double bill, double people, double tip){
+        return Math.ceil((bill * (tip / 100)) / people);
+    }
     
  
 
 
     // You can either create a tester class or put your code here
      public static void main(String[] args){
-        
+        System.out.println(therum(3, 4));
+        System.out.println(Letter(Math.ceil(79.4)));
+        System.out.println(tip(100, 4, 18));
     }
 }
