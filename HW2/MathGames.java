@@ -122,7 +122,7 @@ public class MathGames {
         int tipammount = ((int) Math.ceil(tip(bill, people, tip)));
         System.out.println("Each person will tip " + tipammount + "$");
         System.out.println("Thank you for playing/not crashing my program why did i put so much work into this time for the 2 hours of unskippable credits");
-        System.out.println("Made by: Github copilot");
+        System.out.println("Made by: Github co-pilot");
         input.close();
     }
   
