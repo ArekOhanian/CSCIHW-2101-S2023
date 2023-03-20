@@ -1,5 +1,7 @@
 package HW2;
 
+import java.util.Scanner;
+//I imported the scanner because why not
 
 public class MathGames {
     // 1. Create a method that will calculate the Pythagorean Theorem (https://en.wikipedia.org/wiki/Pythagorean_theorem)
@@ -11,8 +13,15 @@ public class MathGames {
     // Bonus points: Try to make it accept any 2 sides and return the 3rd. So it can take in
     // Hypotenuse and Perpendicular and return the base.
     // Example 1: pythagorean(3,4) would return 5
-    public static double therum(double opposite, double adjacent){
-        return Math.sqrt(Math.pow(opposite , 2) + Math.pow(adjacent , 2));
+
+    public static double findhype(double Perpendicular, double Base){
+        return Math.sqrt(Math.pow(Perpendicular , 2) + Math.pow(Base , 2));
+    }
+    public static double findbase(double Perpendicular, double hypotenuse){
+        return Math.sqrt(Math.pow(hypotenuse , 2) - Math.pow(Perpendicular , 2));
+    }
+    public static double findperp(double Base, double hypotenuse){
+        return Math.sqrt(Math.pow(hypotenuse , 2) - Math.pow(Base , 2));
     }
 
 
@@ -64,8 +73,49 @@ public class MathGames {
 
     // You can either create a tester class or put your code here
      public static void main(String[] args){
-        System.out.println(therum(3, 4));
-        System.out.println(Letter(Math.ceil(79.4)));
-        System.out.println(tip(100, 4, 18));
+        Scanner input = new Scanner(System.in);
+        System.out.println("=================== Pythagorean Program ==============");
+        System.out.println("Please enter the name of your first side (pick between Perpendicular, Hypotenuse, or Base): ");
+        String side1 = input.nextLine();
+        System.out.println("Please enter the name of the other side: ");
+        String side2 = input.nextLine();
+        if (side1.equalsIgnoreCase("Perpendicular") && side2.equalsIgnoreCase("Hypotenuse")|| side1.equalsIgnoreCase("Hypotenuse") && side2.equalsIgnoreCase("Perpendicular")){
+            System.out.print("Please enter the perpendicular side: ");
+            double Perpendicular = input.nextDouble();
+            System.out.print("Please enter the hypotenuse: ");
+            double hypotenuse = input.nextDouble();
+            System.out.println("Your base side is " + findbase(Perpendicular, hypotenuse));
+        }
+        else if (side1.equalsIgnoreCase("Base") && side2.equalsIgnoreCase("Hypotenuse") || side1.equalsIgnoreCase("Hypotenuse") && side2.equalsIgnoreCase("Base")){
+            System.out.print("Please enter the base: ");
+            double Base = input.nextDouble();
+            System.out.print("Please enter the hypotenuse: ");
+            double hypotenuse = input.nextDouble();
+            System.out.println("Your perpendicular side is " + findperp(Base, hypotenuse));
+        }
+        else if (side1.equalsIgnoreCase("Perpendicular") && side2.equalsIgnoreCase("Base") || side1.equalsIgnoreCase("Hypotenuse") && side2.equalsIgnoreCase("Base")){
+            System.out.print("Please enter the base: ");
+            double Base = input.nextDouble();
+            System.out.print("Please enter the perpendicular side: ");
+            double Perpendicular = input.nextDouble();
+            System.out.println("Your hypotenuse is " + findhype(Perpendicular, Base));
+        }
+        else{
+            System.out.println("Thats not a side, you spelt it wrong, or you said the same side twice. Dickhead.");
+        }
+        System.out.println("=================== Grade Program ==============");
+        System.out.print("Please enter your grade to one decimal place: ");
+        double grade = input.nextDouble();
+        System.out.println(Letter(Math.ceil(grade)));
+        System.out.println("==================== Tipping Program ====================");
+        System.out.print("Please enter the total bill");
+        double bill = input.nextDouble();
+        System.out.print("PLease enter the amount of people splitting the bill: ");
+        double people = input.nextDouble();
+        System.out.print("Please enter the percentage to tip: ");
+        double tip = input.nextDouble();
+        System.out.println("Each person will tip " + Math.ceil(tip(bill, people, tip)));
+        input.close();
     }
+  
 }
