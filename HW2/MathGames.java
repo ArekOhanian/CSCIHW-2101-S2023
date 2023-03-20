@@ -75,7 +75,7 @@ public class MathGames {
      public static void main(String[] args){
         Scanner input = new Scanner(System.in);
         System.out.println("=================== Pythagorean Program ==============");
-        System.out.println("Please enter the name of your first side (pick between Perpendicular, Hypotenuse, or Base): ");
+        System.out.println("Please enter the name of your first side (pick between Perpendicular, Hypotenuse, or Base(only use a side once): ");
         String side1 = input.nextLine();
         System.out.println("Please enter the name of the other side: ");
         String side2 = input.nextLine();
@@ -101,20 +101,28 @@ public class MathGames {
             System.out.println("Your hypotenuse is " + findhype(Perpendicular, Base));
         }
         else{
-            System.out.println("Thats not a side, you spelt it wrong, or you said the same side twice. Dickhead.");
+            System.out.println("Thats not a side, you spelt it wrong, or you said the same side twice. Please run the program again. Dickhead.");
         }
         System.out.println("=================== Grade Program ==============");
-        System.out.print("Please enter your grade to one decimal place: ");
+        System.out.print("Please enter your grade: ");
         double grade = input.nextDouble();
+        if (grade <= 100 && grade >=0){
         System.out.println(Letter(Math.ceil(grade)));
+        }
+        else {
+            System.out.println("Thats not a possible grade I can't belive you would lie to me");
+        }
         System.out.println("==================== Tipping Program ====================");
-        System.out.print("Please enter the total bill");
+        System.out.print("Please enter the total bill as a number: ");
         double bill = input.nextDouble();
-        System.out.print("PLease enter the amount of people splitting the bill: ");
+        System.out.print("PLease enter the amount of people splitting the bill again as a number: ");
         double people = input.nextDouble();
-        System.out.print("Please enter the percentage to tip: ");
+        System.out.print("Please enter the percentage to tip one more time as a number or the program will break please: ");
         double tip = input.nextDouble();
-        System.out.println("Each person will tip " + Math.ceil(tip(bill, people, tip)));
+        int tipammount = ((int) Math.ceil(tip(bill, people, tip)));
+        System.out.println("Each person will tip " + tipammount + "$");
+        System.out.println("Thank you for playing/not crashing my program why did i put so much work into this time for the 2 hours of unskippable credits");
+        System.out.println("Made by: Github copilot");
         input.close();
     }
   
