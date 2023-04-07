@@ -114,7 +114,10 @@ public class BankAccount {
     public void withdraw(double amount) {
         this.balance -= amount;
     }
+    public void overDraft(double amount, BankAccount bank){
+            this.balance -= (amount + 35);   
 
+    }
     // Create a mthod that will subtract a mothly fee from the balance
     // this method will take a double as a parameter
     // this method will subtract the fee from the balance
@@ -163,9 +166,27 @@ public class BankAccount {
         } else if (choice == 2) {
             System.out.println("How much would you like to withdraw?");
             double amount = input.nextDouble();
+            if (account.balance <= 0 || account.balance < amount){
+                System.out.println("Your account balance is going to be less than or equal to 0$ you are going to be charged an overdraft fee of $35. Would you still like to withdraw? (please input y for yes and N for no).) ");
+                String yn = input.next();
+                if (yn.equalsIgnoreCase(yn)){
+                    account.overDraft(amount, account);
+                    account.printBalance();
+                    System.out.println("Thank you for banking with Appas Bank you better pay us or we will break your kneecaps.");
+                }
+                else if (yn.equalsIgnoreCase("n")){
+                    System.out.println("Thank you for banking with Appas Bank");
+                }
+            }
+            else {
             account.withdraw(amount);
             account.printBalance();
-        } // place holder for choice 3
+            }
+
+        } // place holder for choice 3\
+        else if (choice == 3) {
+   
+        }
         else if (choice == 4) {
             account.printBalance();
         } else if (choice == 5) {
