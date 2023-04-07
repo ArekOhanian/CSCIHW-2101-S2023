@@ -118,6 +118,19 @@ public class BankAccount {
             this.balance -= (amount + 35);   
 
     }
+    public void transfer(double amount, BankAccount account_user, BankAccount account_reciver) {
+        account_user.withdraw(amount);
+        account_reciver.deposit(amount);
+    }
+    public void simpleinterest(double Principal, int time, double rate) {
+        double simpleInterest = (Principal * time * rate)/100;
+        double roundedamount = Math.round(simpleInterest * 100.0) / 100.0;
+        System.out.println("The current rate is " + rate + "%");
+        System.out.println("The selected time is " + time + " years");
+        System.out.println("The simple interest after " + time + " years is: $" + simpleInterest);
+        System.out.println("The total amount after " + time + " years is: $" + roundedamount);
+
+    }
     // Create a mthod that will subtract a mothly fee from the balance
     // this method will take a double as a parameter
     // this method will subtract the fee from the balance
@@ -151,7 +164,7 @@ public class BankAccount {
     // Create a method that will interact with the user based on their choice from
     // the menu method
     // This method will take a Bank Account as a parameter
-    public static void interact(BankAccount account) {
+    public static void interact(BankAccount account, BankAccount account2) {
         // get the choice from the menu method
         int choice = menu();
         // create a scanner object
@@ -167,7 +180,7 @@ public class BankAccount {
             System.out.println("How much would you like to withdraw?");
             double amount = input.nextDouble();
             if (account.balance <= 0 || account.balance < amount){
-                System.out.println("Your account balance is going to be less than or equal to 0$ you are going to be charged an overdraft fee of $35. Would you still like to withdraw? (please input y for yes and N for no).) ");
+                System.out.println("Your account balance is going to be less than or equal to $0 you are going to be charged an overdraft fee of $35. Would you still like to withdraw? (please input y for yes and N for no).) ");
                 String yn = input.next();
                 if (yn.equalsIgnoreCase(yn)){
                     account.overDraft(amount, account);
@@ -178,6 +191,14 @@ public class BankAccount {
                     System.out.println("Thank you for banking with Appas Bank");
                 }
             }
+            else if (amount == 0){
+                System.out.println("you can't withdraw $0");
+                System.out.println("Thank you for banking with Appas Bank");
+            }
+            else if (amount < 0){
+                System.out.println("you can't withdraw a negative amount");
+                System.out.println("Thank you for banking with Appas Bank");
+            }
             else {
             account.withdraw(amount);
             account.printBalance();
@@ -185,16 +206,38 @@ public class BankAccount {
 
         } // place holder for choice 3\
         else if (choice == 3) {
-   
+            System.out.println("How much would you like to transfer?");
+            double amount = input.nextDouble();
+            System.out.println("Who would you like to transfer to?");
+            String name = input.next();
+            if (name.equalsIgnoreCase("MOMO")){
+                account.transfer(amount, account, account2);
+                account.printBalance();
+            }
+            else if (name.equalsIgnoreCase("Katara")){
+                account.transfer(amount, account2, account);
+                account2.printBalance();
+            }
+            else {
+                System.out.println("Invalid name");
+            }
         }
         else if (choice == 4) {
             account.printBalance();
-        } else if (choice == 5) {
+        } 
+        else if (choice == 5) {
             System.out.println("How many years? (Whole numbers only)");
             int years = input.nextInt();
             account.compoundInterest(account.getbalance(), years, account.interestRate, account.period);
             account.printBalance();
-        } // place holder for choice 6
+        }
+        else if (choice == 6) {
+            System.out.println("How many years? (Whole numbers only)");
+            int time = input.nextInt();
+            account.simpleinterest(account.getbalance(), time, account.interestRate);
+            account.printBalance();
+        }
+
         else if (choice == 0) {
             System.out.println("Thank you for banking with Appas Bank");
         } else { // this would catch any invalid choices like

@@ -6,10 +6,9 @@ public class BankAccountTester {
 
         System.out.println(myAccount.name);
 
-        BankAccount yourAccount = new BankAccount("Katara", 1234567, 10000, 101, "01/01/2000");
+        BankAccount yourAccount = new BankAccount("Katara", 1234567, 100000, 101, "01/01/2000");
 
         System.out.println(yourAccount.name);
-
         System.out.println(yourAccount.getbalance());
         System.out.println(yourAccount.getdob());
         System.out.println(yourAccount.getssn());
@@ -38,7 +37,7 @@ public class BankAccountTester {
         // int choice = BankAccount.menu();
         // System.out.println(choice);
 
-        BankAccount.interact(yourAccount);
+        BankAccount.interact(yourAccount, myAccount);
         // BankAccount.interact(myAccount);
 
     }
