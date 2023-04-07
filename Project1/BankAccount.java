@@ -151,6 +151,7 @@ public class BankAccount {
         System.out.println("4. Balance");
         System.out.println("5. Compound Interest");
         System.out.println("6. Simple Interest"); // HomeWork
+        System.out.println("7. Savings Account");
         System.out.println("0. Exit");
         System.out.println("Please enter your choice: ");
         choice = input.nextInt();
@@ -180,14 +181,14 @@ public class BankAccount {
             System.out.println("How much would you like to withdraw?");
             double amount = input.nextDouble();
             if (account.balance <= 0 || account.balance < amount){
-                System.out.println("Your account balance is going to be less than or equal to $0 you are going to be charged an overdraft fee of $35. Would you still like to withdraw? (please input y for yes and N for no).) ");
-                String yn = input.next();
-                if (yn.equalsIgnoreCase(yn)){
+                System.out.println("Your account balance is going to be less than or equal to $0 you are going to be charged an overdraft fee of $35. Would you still like to withdraw? (please input 1 for yes and 2 for no). ");
+                int yn = input.nextInt();
+                if (yn == 1){
                     account.overDraft(amount, account);
                     account.printBalance();
                     System.out.println("Thank you for banking with Appas Bank you better pay us or we will break your kneecaps.");
                 }
-                else if (yn.equalsIgnoreCase("n")){
+                else if (yn == 2){
                     System.out.println("Thank you for banking with Appas Bank");
                 }
             }
@@ -237,10 +238,45 @@ public class BankAccount {
             account.simpleinterest(account.getbalance(), time, account.interestRate);
             account.printBalance();
         }
+        else if (choice == 7){
+            System.out.println("Would you like to open a savings account? (please input 1 for yes and 2 for no). ");
+            int yesorno = input.nextInt();
+            if (account.balance > 10000 & yesorno == 1){
+                System.out.println("How much would you like to deposit into your savings account?");
+                double amount = input.nextDouble();
+                System.out.println("Would you like compound or flat interest? (please input 1 for compound and 2 for flat). ");
+                int interest = input.nextInt();
+                if (interest == 1){
+                    System.out.println("How many years would you like to compound your interest for? (Whole numbers only)");
+                    int years = input.nextInt();
+                    account.compoundInterest(amount, years, .0001, 4);
+                    account.printBalance();
+                }
+                else if (interest == 2){
+                    System.out.println("How many years would you like to compound your interest for? (Whole numbers only)");
+                    int years = input.nextInt();
+                    account.simpleinterest(amount, years, .001);
+                    account.printBalance();
+                }
+                else {
+                    System.out.println("Invalid choice");
+                }
+            }
+            else if (account.balance < 10000 & yesorno == 1){
+                System.out.println("You need at least $10,000 to open a savings account");
+            }
+            else if (yesorno == 2){
+                System.out.println("Thank you for banking with Appas Bank");
+            }
+            else {
+                System.out.println("Invalid choice");
+            }
+        }
 
         else if (choice == 0) {
             System.out.println("Thank you for banking with Appas Bank");
-        } else { // this would catch any invalid choices like
+        } 
+        else { // this would catch any invalid choices like
             System.out.println("Invalid choice");
         }
 
