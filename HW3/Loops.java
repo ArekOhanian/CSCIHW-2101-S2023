@@ -105,6 +105,7 @@ public class Loops {
             total = total + num;
         }
         System.out.println("TOTAL ENDED --- The total is " + total + ".");
+        
     }
 
     public static void main(String[] args) {
