@@ -1,5 +1,5 @@
 package HW4;
-
+import java.util.Scanner;
 public class Arrays {
 
     // CONVERT THE SUMS METHOD FROM HW3 TO ADD EACH VALUE TO AN ARRAY AND THEN OUTPUT THE 
@@ -23,9 +23,36 @@ public class Arrays {
     // Total: 22
     // Array: {12,2,3,4,1,0}
     public static void Arraysums(){
-
+        Scanner sc = new Scanner(System.in);
+        System.out.println("I will add up the numbers you give me...");
+        System.out.print("Number: ");
+        int num = sc.nextInt();
+        int total = num;
+        int [] sums = new int[10];
+        sums[0] = num;
+        int i = 0;
+        while (num != 0) {
+            System.out.println("The total so far is " + total + ".");
+            System.out.print("Number: ");
+            num = sc.nextInt();
+            total = total + num;
+            sums[i+1] = num;
+            i = i+1;
+            if (num == 0 || i == sums.length-1) {
+                System.out.println("Total: " + total);
+                System.out.print("{");
+                for (int e = 0; e < sums.length; e++) {
+                System.out.print(sums[e]);
+                    if (e < sums.length - 1) {
+                    System.out.print(", ");
+                    }
+                }
+            break;
+            }
+        }
+        System.out.println("}");
+        
     }
-
     // Create a method that will brute force a password EX.
     // bruteForce("ZZZZ")
     // The program should then guess each char of the string and compare it to see if it is equal
@@ -45,7 +72,15 @@ public class Arrays {
         char[] alphabet = new char[]{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
         '!', '@', '#', '$', '%', '^', '&', '*', '(', ')','<','>','/','?'};
-    
+        char [] passwordArray = password.toCharArray();
+        for (int i = 0; i < passwordArray.length; i++) {
+            for (int e = 0; e < alphabet.length; e++) {
+                if (passwordArray[i] == alphabet[e]) {
+                    answer = answer + alphabet[e];
+                    System.out.println(answer);
+                }
+            }
+        }
         return answer; 
     }
 
@@ -67,7 +102,9 @@ public class Arrays {
     public static void main(String[] args) {
         // Tester main method for your methods
         System.out.println("Hello World!");
-
+        Arraysums();
+        System.out.println("==================================");
+        bruteForce("fuck");
     }
 
     
