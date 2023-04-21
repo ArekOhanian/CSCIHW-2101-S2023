@@ -157,7 +157,7 @@ public class BankAccount {
         choice = input.nextInt();
         return choice;
     }
-
+    
     public void printBalance() {
         System.out.println("Your balance is: $" + this.balance);
     }
@@ -307,5 +307,4 @@ public class BankAccount {
         System.out.println("Compound Interest after " + time + " years is: $" + compinterest);
         System.out.println("Total Amount after " + time + " years is: $" + roundedAmount);
     }
-
 }

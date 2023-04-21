@@ -51,7 +51,7 @@ public class Arrays {
             }
         }
         System.out.println("}");
-        
+        sc.close();
     }
     // Create a method that will brute force a password EX.
     // bruteForce("ZZZZ")
@@ -93,6 +93,23 @@ public class Arrays {
     // Hint 2: 2 nested For loops should be all thats needed for the swapping logic
     public static int[] sorter(int[] nums){
         int [] sortedArray = new int[nums.length];
+        int [] temp = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            for (int e = 1; e < nums.length -1; e++) {
+                if (nums[i] < nums[e] || nums[e] > nums[i]){
+                    temp[i] = nums[i];
+                    sortedArray[i] = temp[i];
+                }
+                else if (nums[i] > nums[e] || nums[e] < nums[i]) {
+                    temp[i] = nums[e];
+                    sortedArray[i] = temp[i];
+                }
+                else if (nums[i] == nums[e]) {
+                    temp[i] = nums[i];
+                    sortedArray[i] = temp[i];
+                }
+            }
+        }
         return sortedArray;
     }
 
@@ -104,7 +121,9 @@ public class Arrays {
         System.out.println("Hello World!");
         Arraysums();
         System.out.println("==================================");
-        bruteForce("fuck");
+        bruteForce("gfdsnklgfdanjgvokp;f;gna;");
+        System.out.println("==================================");
+        System.out.println(sortedArray(new int[]{1, 0, 2, 9}));
     }
 
     
