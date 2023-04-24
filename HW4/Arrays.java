@@ -71,7 +71,7 @@ public class Arrays {
         String answer = "";
         char[] alphabet = new char[]{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-        '!', '@', '#', '$', '%', '^', '&', '*', '(', ')','<','>','/','?'};
+        '!', '@', '#', '$', '%', '^', '&', '*', '(', ')','<','>','/','?', ';'};
         char [] passwordArray = password.toCharArray();
         for (int i = 0; i < passwordArray.length; i++) {
             for (int e = 0; e < alphabet.length; e++) {
@@ -93,25 +93,24 @@ public class Arrays {
     // Hint 2: 2 nested For loops should be all thats needed for the swapping logic
     public static int[] sorter(int[] nums){
         int [] sortedArray = new int[nums.length];
-        int [] temp = new int[nums.length];
-        for (int i = 0; i < nums.length; i++) {
-            for (int e = 1; e < nums.length -1; e++) {
-                if (nums[i] < nums[e] || nums[e] > nums[i]){
-                    temp[i] = nums[i];
-                    sortedArray[i] = temp[i];
+        int [] temp = new int [nums.length];
+        for (int i = 0 ; i < nums.length; i++) {
+            for(int e = 0; e < nums.length; e++) {
+                if (nums[e] > nums[i]) {
+                    temp[e] = nums[i];
+                    nums[i] = nums[e];
+                    nums[e] = temp[e];
+                    sortedArray[i] = nums[i];
+                    sortedArray[e] = nums[e];
                 }
-                else if (nums[i] > nums[e] || nums[e] < nums[i]) {
-                    temp[i] = nums[e];
-                    sortedArray[i] = temp[i];
-                }
-                else if (nums[i] == nums[e]) {
-                    temp[i] = nums[i];
-                    sortedArray[i] = temp[i];
-                }
+                
             }
         }
-        return sortedArray;
-    }
+        
+        return sortedArray;     
+        }   
+
+
 
 
 
@@ -123,7 +122,17 @@ public class Arrays {
         System.out.println("==================================");
         bruteForce("gfdsnklgfdanjgvokp;f;gna;");
         System.out.println("==================================");
-        System.out.println(sortedArray(new int[]{1, 0, 2, 9}));
+        int [] nums = {9,10,2,5,3,4,7,8};
+        int [] sorted = sorter(nums);
+        System.out.print("Sorted Array: {");
+        for (int i = 0; i < sorted.length; i++) {
+            if (i == sorted.length-1) {
+                System.out.print(sorted[i]);
+                break;
+            }
+            System.out.print(sorted[i] + ", ");
+        }
+        System.out.println("}");
     }
 
     
