@@ -155,6 +155,7 @@ public class ArrayListPlayground {
                 System.out.println();
             }
         }
+        input.close();
     }
 }
 

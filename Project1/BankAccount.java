@@ -279,7 +279,7 @@ public class BankAccount {
         else { // this would catch any invalid choices like
             System.out.println("Invalid choice");
         }
-
+        input.close();
     }
 
     // Create a method that will calculate the interest on the balance using
