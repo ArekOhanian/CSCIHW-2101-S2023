@@ -1,4 +1,7 @@
+import java.util.ArrayList;
+import java.util.Scanner;
 public class Ladder {
+
     // Panels are the physical glass or tempered glass sheets
     public int panels;
     // ladder is the ladder structure (2d array)
@@ -6,33 +9,46 @@ public class Ladder {
     // round counter
     public int round = 1;
 
+
+    
+
     // make a ladder object with no parameter (default 5 panels)
-    ladder = new int[5][2];
+    Ladder(){
+        this.panels = 5;
+    }
     // make a ladder object with a panel parameter and assign the panels to that int
-    ladder = new int[panels][2];
+    Ladder(int panels){
+        this.panels = panels;
+    }
     // create an array list called selections of integers for the selections the user will enter
     ArrayList<Integer> selections = new ArrayList<Integer>();
     // ----make a int method to get the selection from the user called getSelection()---
     int getSelection(){
-        System.out.println("Please select a panel (L or R)");
+        System.out.println("Please enter a selection (L or R): ");
         Scanner scan = new Scanner(System.in);
         String selection = scan.nextLine();
         int convertedSelection = 0;
-        if (selection.equalsIgnorecase("L")){
-            convertedSelection = 0;
-            System.out.println("You selected: L");
+        while (selection != ("L") || selection != ("l") || selection != ("R") || selection != ("r")){
+                if (selection.equals("L") || selection.equals("l")){
+                convertedSelection = 0;
+                System.out.println("You selected: L");
+                break;
+                }
+                else if (selection.equals("R") || selection.equals("r")){
+                convertedSelection = 1;
+                System.out.println("You selected: R");
+                break;
+                }
+                else{
+                System.out.println("Selection is invalid");
+                System.out.println("Please enter a valid selection");
+                selection = scan.nextLine();
+                }
+            
+            }
             return convertedSelection;
         }
-        else if (selection.equalsIgnorecase("R")){
-            convertedSelection = 1;
-            System.out.println("You selected: R");
-            return convertedSelection;
-        }
-        else{
-            System.out.println("Selection is invalid");
-            return -1;
-        }
-    }
+    
     // create a int variable for converetedSelection
     // collect the selection ( use scanner here )
         // if selection is L or l convert the selection to 0
@@ -56,9 +72,13 @@ public class Ladder {
     // This part might be hard but know you can cast a variable with (int) and then a second statment
     // to make a random variable between 1 and 2 using (2 * Math.random())
     // combining those two is trivial
-    int createLadder(){
-        int[][] ladder = new int[panels][2];
+    int [][] createLadder(){
+        ladder = new int[panels][2];
         for (int i = 0; i < ladder.length; i++){
+            for (int j = 0; j < ladder[i].length; j++){
+                ladder[i][j] = (int)(2*Math.random());
+
+            }
             if (ladder[i][0] == ladder[i][1]){
                 if (ladder[i][0] == 0){
                     ladder[i][0] = 1;
@@ -66,12 +86,6 @@ public class Ladder {
                 else{
                     ladder[i][0] = 0;
                 }
-            }
-            else{
-                ladder[i][0] = (int)(2 * Math.random());
-            }
-            for (int j = 0; j < ladder[i].length; j++){
-                ladder[i][j] = (int)(2 * Math.random());
             }
         }
         return ladder;
@@ -116,7 +130,7 @@ public class Ladder {
         // increment the round counter
         // print and say they lose 1 life 
         // return false 
-    boolean calcPanel(){
+    boolean calcPanel(int[][] ladder, ArrayList<Integer> selections){
         int size = selections.size();
         System.out.println("Round: " + round);
         int[] temp = new int[2];
@@ -125,6 +139,7 @@ public class Ladder {
         }
         int currentSelection = getSelection();
         selections.add(currentSelection);
+        size = selections.size();
         int choice = selections.get(size-1);
         if (temp[choice] == 1){
             System.out.println("Answer is correct");
@@ -148,7 +163,8 @@ public class Ladder {
                 System.out.println();
             }
             System.out.println("|||||| ---- Finish");
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             System.out.println("ERROR LADDER IS NOT CREATED OR IS NULL...");
         }
     }
@@ -172,7 +188,8 @@ public class Ladder {
                 }
                 System.out.println();
             }
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             System.out.println("ERROR LADDER IS NOT CREATED OR IS NULL...");
         }
     }
@@ -191,14 +208,13 @@ public class Ladder {
     public void printCurrentLadder(){
         System.out.println("|||||| ---- Start");
         for (int i = 0; i < selections.size(); i++){
-            for (int j = 0; j < ladder[i].length; j++){
-                system.out.print("|"+ladder[i][j] + "|");
+            for (int j = 0; j< ladder[i].length; j++){
+                System.out.print("|"+ladder[i][j]+"|");
             }
             System.out.println();
         }
         System.out.println("|?||?|");
     }
-    
     
     
     

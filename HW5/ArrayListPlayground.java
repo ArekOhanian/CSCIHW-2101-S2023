@@ -1,11 +1,11 @@
 package HW5;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.Collections;
 import java.util.Scanner;
 
-import javax.print.attribute.standard.NumberUpSupported;
+
 
 public class ArrayListPlayground {
     public static void main(String[] args) {

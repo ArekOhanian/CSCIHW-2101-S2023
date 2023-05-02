@@ -1,8 +1,9 @@
+
 public class Main {
     public static void main(String[] args) {
         
-        Player play = new Player(10);
-        Ladder ladder = new Ladder(5);
+        Player play = new Player(1);
+        Ladder ladder = new Ladder(10);
         int[][] laddercreate = ladder.createLadder();
         ladder.printLadderBlank();
         System.out.println("Total Lives: "+play.getLives());
